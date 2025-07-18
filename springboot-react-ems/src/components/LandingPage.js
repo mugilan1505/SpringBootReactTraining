@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/LandingPage.css';
+import './LandingPage.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <div className="landing-container">
       <div className="landing-content">
-        <h1>Welcome to </h1>
+        <h1>Welcome to EMS</h1>
         <p>Employee Management System made simple and secure.</p>
         <button className="get-started-btn" onClick={() => navigate('/register')}>Get Started</button>
       </div>

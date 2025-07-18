@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/LandingPage.css';
-import '../styles/HomePage.css';
+import './LandingPage.css';
+import './HomePage.css';
 
 const HomePage = () => {
   // ...existing state
@@ -33,10 +32,7 @@ const HomePage = () => {
   const handleUpdateEmployee = (empID) => {
     fetch(`/employee/${empID}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editData)
     })
       .then((response) => {
@@ -61,12 +57,7 @@ const HomePage = () => {
   // Delete employee handler
   const handleDeleteEmployee = (empID, name) => {
     if (!window.confirm(`Are you sure you want to delete employee '${name}' (ID: ${empID})?`)) return;
-    fetch(`/employee/${empID}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+    fetch(`/employee/${empID}`, { method: 'DELETE' })
       .then((response) => {
         if (!response.ok) {
           return response.text().then(text => {
@@ -95,11 +86,7 @@ const HomePage = () => {
     setLoading(true);
     setError(null);
     setEmployees([]);
-    fetch('/employee', {
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+    fetch('/employee')
       .then((response) => {
         console.log('Fetch /employee status:', response.status);
         if (!response.ok) {

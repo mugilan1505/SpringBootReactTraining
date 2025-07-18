@@ -1,20 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import GetEmployees from "./components/GetEmployees";
-// import AddEmployee from "./components/AddEmployee";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
+import Header from './components/Header';
+import Logout from './components/Logout';
+import HomePage from './components/HomePage';
+import AddEmployee from './components/AddEmployee';
 
-const App = () => (
-  <Router>
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<GetEmployees />} />
-      {/* <Route path="/add" element={<AddEmployee />} /> */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Signup />} />
-    </Routes>
-  </Router>
-);
+function App() {
+  return (
+    <Router>
+      {window.location.pathname !== '/' && <Header />}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/add-employee" element={<AddEmployee />} />
+      </Routes>
+    </Router>
+  );
+}
 
 export default App;
